@@ -544,10 +544,8 @@ const lv_img_dsc_t ${out_name} = {
     }
 
     classify_pixel(value, bits){
-      const tmp = 1 << (8 - bits);
-      let val = Math.round(value / tmp) * tmp;
-      if(val < 0) val = 0;
-      return val;
+        const shift = 8 - bits;
+        return value >> shift << shift;
     }
     format_to_c_array() {
         
